@@ -1,10 +1,10 @@
 import randomColor from 'randomcolor'
 
 export function sketch(p) {
-  // http://localhost:3003/?spiral=1001
+  // http://localhost:3003/?spiral=5
 
   const url = new URL(window.location.href)
-  const spiral = (url.searchParams.get('spiral') || 12) + 1
+  const spiral = (Number(url.searchParams.get('spiral')) || 12) + 1
 
   const SIZE = 36
   const WIDTH = 720 + SIZE
@@ -36,7 +36,10 @@ export function sketch(p) {
 
   console.log('d2', d2)
 
-  const sum = [...d1, ...d2].reduce((a, b) => a + b, 0)
+  const sum = [
+    ...d1,
+    ...(d2.sort((a, b) => a - b))
+  ].reduce((a, b) => a + b, 0)
 
   console.log('sum', sum - 1)
 
