@@ -13,7 +13,8 @@ export function sketch(p) {
   let d1 = []
 
   for (let i = 1; i < spiral; i += 1) {
-    const n = i * (i - 1) + 1
+    // const n = i * (i - 1) + 1
+    const n = Math.pow(i, 2) - i + 1
     d1.push(n)
   }
 
